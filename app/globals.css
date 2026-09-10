@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* Tailwind wikkelt hover: standaard in @media (hover: hover). Op een touchscreen
+   is elke hover-stijl daardoor dood; zonder die wrapper zet een tik :hover en
+   blijft dat staan tot je ergens anders tikt. Dit maakt hover overal echt. */
+@custom-variant hover (&:hover);
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-soft: var(--paper-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  /* Op de zwarte banden. Losse tokens in plaats van een dark-variant: de
+     banden zijn een ontwerpkeuze, geen themavoorkeur van de bezoeker. */
+  --color-band: var(--band);
+  --color-band-fg: var(--band-fg);
+  --color-band-muted: var(--band-muted);
+  --color-band-line: var(--band-line);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono-face);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --paper: #ffffff;
+  /* Nauwelijks van wit te onderscheiden, en precies daarom bruikbaar: het
+     scheidt secties zonder dat er een lijn of kader aan te pas komt. */
+  --paper-soft: #fbfbfb;
+  --ink: #000000;
+  --muted: #6b6f76;
+  --line: #e6e6e6;
+
+  --band: #000000;
+  --band-fg: #ffffff;
+  --band-muted: #9ca0a6;
+  --band-line: #262626;
+
+  --radius-card: 20px;
+  --radius-media: 24px;
+}
+
+html {
+  color-scheme: light;
+  /* Bewust GEEN scroll-behavior: smooth.
+     Chrome voert de sprong naar #contact bij het laden van /nl#contact dan uit
+     als animatie, en die wordt afgebroken zodra React hydrateert — de bezoeker
+     landt bovenaan in plaats van bij de sectie. Gemeten: met smooth scrollY 0,
+     zonder smooth precies goed. Dat raakt elke link vanaf een projectpagina en
+     elke gedeelde link met een hash. */
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  /* ---- Typografie -------------------------------------------------------
+     Koppen staan op gewicht 400, niet vet. De schaal doet het werk, niet de
+     dikte — dat is het verschil tussen "groot en zwaar" en "groot en rustig".
+     De negatieve tracking hoort daarbij: op 72px valt normale spatiëring
+     uit elkaar. */
+  .display {
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.5rem, 1rem + 5.4vw, 4.5rem);
+    text-wrap: balance;
+  }
+
+  .heading {
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    font-size: clamp(1.875rem, 1rem + 2.6vw, 3.25rem);
+    text-wrap: balance;
+  }
+
+  .stat {
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-size: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+  }
+
+  /* Het cursieve accent in elke kop. Één woordgroep per kop, meer niet —
+     dan is het geen accent meer. */
+  .accent {
+    font-style: italic;
+  }
+
+  /* Kleine hoofdletters in mono voor bijschriften, nummers en labels. */
+  .label {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .label-caps {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* ---- Knoppen ----------------------------------------------------------
+     Volledig rond. De radius is bewust absurd hoog in plaats van 9999px, zodat
+     hij ook klopt als de knop een keer twee regels hoog wordt. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 999px;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition:
+      transform 300ms var(--ease-out-expo),
+      background-color 200ms,
+      color 200ms,
+      border-color 200ms;
+  }
+
+  .pill:hover {
+    transform: translateY(-2px);
+  }
+
+  .pill:active {
+    transform: translateY(0);
+    transition-duration: 75ms;
+  }
+
+  .pill-solid {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .pill-outline {
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .pill-outline:hover {
+    border-color: var(--ink);
+  }
+
+  /* Op een zwarte band draaien de rollen om. */
+  .band .pill-solid {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .band .pill-outline {
+    border-color: var(--band-line);
+    color: var(--band-fg);
+  }
+
+  .band .pill-outline:hover {
+    border-color: var(--band-fg);
+  }
+
+  /* Onderstreping die vanuit links uitgroeit in plaats van te knipperen. */
+  .link {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: background-size 300ms var(--ease-out-expo);
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    background-size: 0 1px;
+  }
+}
+
+/* ---- Marquee ------------------------------------------------------------
+   Twee identieke lijsten naast elkaar die samen precies één lijstbreedte
+   opschuiven; op het moment dat de eerste weg is staat de tweede exact waar de
+   eerste begon. Daarom is de sprong terug niet te zien. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---- Reveal-on-scroll ---------------------------------------------------
+   Alleen transform en opacity, dus het blijft op de compositor.
+
+   Het attribuut data-reveal wordt pas door components/reveal.tsx gezet, in een
+   effect. De HTML die de Pi uitserveert heeft het dus niet, en zonder
+   JavaScript matcht deze regel nergens: alles staat gewoon zichtbaar in plaats
+   van voorgoed op opacity 0. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 800ms var(--ease-out-expo),
+    transform 800ms var(--ease-out-expo);
+}
+
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+    /* Zonder animatie zou de tweede kopie er dubbel bij staan. */
+    width: 100%;
+  }
+
+  .pill:hover {
+    transform: none;
+  }
+}
