@@ -12,7 +12,7 @@ export const SITE = {
    * het Node-proces zelf (dat luistert op poort 5200 — zie
    * deploy/portfolio.service). Wat ertussen zit regelt iemand anders.
    */
-  url: "https://fynn.fynntervoort.nl",
+  url: "https://portfolio.fynntervoort.com",
   email: "info@fynnworks.nl",
   github: "https://github.com/FxnnBT",
   linkedin: "https://www.linkedin.com/in/fynn-tervoort-7243a8386/",

@@ -100,8 +100,8 @@ export const projects: Project[] = [
       nl: "Portfolio en speellijst voor een solo-theatermaker. Filmische hero, een speellijst die zichzelf bijwerkt en recensies uit de Volkskrant en Theaterkrant op de voorgrond.",
       en: "Portfolio and tour dates for a solo theatre performer. Cinematic hero, a self-updating schedule, and press quotes from de Volkskrant and Theaterkrant up front.",
     },
-    // TODO: vervang door wat je hier echt gebruikt hebt (bijv. HTML, CSS, PHP).
-    stack: ["TODO"],
+    // TODO: vervang door wat je hier echt gebruikt hebt (bijv. HTML, CSS, JavaScript, PHP).
+    stack: ["HTML", "CSS", "JavaScript", "PHP"],
     href: "https://marcelhensema.nl",
     image: "/work/marcel-hensema.jpg",
     brief: {
@@ -136,8 +136,8 @@ export const projects: Project[] = [
       nl: "Webshop voor tajines, muntthee, olijfzeep en textiel uit Marokko. De winkel is in aanbouw; er staat nu een wachtpagina die alvast mailadressen verzamelt voor de opening.",
       en: "Web shop for tagines, mint tea, olive soap and textiles from Morocco. The shop is in the works; a holding page is already collecting email addresses for launch day.",
     },
-    // TODO: vervang door wat je hier echt gebruikt hebt (bijv. HTML, CSS, PHP).
-    stack: ["TODO"],
+    // TODO: vervang door wat je hier echt gebruikt hebt (bijv. HTML, CSS, JavaScript, PHP).
+    stack: ["HTML", "CSS", "JavaScript", "PHP"],
     href: "https://beldiamsterdam.com",
     image: "/work/beldi-amsterdam.jpg",
     brief: {
@@ -196,35 +196,35 @@ export const projects: Project[] = [
     kind: "school",
     year: "2026",
     title: {
-      nl: "TODO — naam van de opdracht",
-      en: "TODO — name of the assignment",
+      nl: "Duurzaamhuis dashboard met API's",
+      en: "Sustainable house dashboard with APIs",
     },
     summary: {
-      nl: "TODO: in één of twee zinnen wat je gebouwd hebt en voor wie.",
-      en: "TODO: in one or two sentences, what you built and for whom.",
+      nl: "Een dashboard waar je bepaalde info kan zien over wat er in een smart home gebeurt. het is een schoolopdracht, de data is echte data.",
+      en: "A dashboard where you can see certain info about what is happening in a smart home. It is a school assignment, the data is real data.",
     },
-    stack: ["TODO"],
+    stack: ["PHP", "JavaScript", "HTML", "CSS"],
     brief: {
-      nl: "TODO: wat was de opdracht precies? Wie was de opdrachtgever of de doelgroep, en welke eisen kreeg je mee?",
-      en: "TODO: what exactly was the assignment? Who was the client or target audience, and what requirements were you given?",
+      nl: "Doel was om te spelen met API's en data visualisatie. De opdracht was om een dashboard te maken waar je bepaalde info kan zien over wat er in een smart home gebeurt.",
+      en: "The goal was to play with APIs and data visualization. The assignment was to create a dashboard where you can see certain info about what is happening in a smart home.",
     },
     process: [
       {
-        nl: "TODO: eerste stap — hoe begon je? Onderzoek, schetsen, een gesprek?",
-        en: "TODO: first step — how did you start? Research, sketches, a conversation?",
+        nl: "Eerste stap was een design maken in figma en kijken wat voor dingen er in een dashboard moeten komen.",
+        en: "First step was to create a design in Figma and see what kind of things should be included in a dashboard.",
       },
       {
-        nl: "TODO: een keuze die je onderweg maakte, en waarom je die maakte.",
-        en: "TODO: a decision you made along the way, and why you made it.",
+        nl: "De keuzen maken tussen welke API's er gebruikt worden en hoe de data gevisualiseerd wordt.",
+        en: "Making choices between which APIs are used and how the data is visualized.",
       },
       {
-        nl: "TODO: hoe heb je het getest of laten zien, en wat kwam daaruit?",
-        en: "TODO: how did you test or present it, and what came out of that?",
+        nl: "We hebben de data eerst lokaal getest en daarna pas op de site gezet.",
+        en: "We tested the data locally first and then put it on the site.",
       },
     ],
     learned: {
-      nl: "TODO: wat ging er mis, wat werkte juist goed, en wat doe je een volgende keer anders? Wees concreet — dat je veel geleerd hebt zegt een examinator niets.",
-      en: "TODO: what went wrong, what worked well, and what would you do differently next time? Be concrete — saying you learned a lot tells an examiner nothing.",
+      nl: "De documentatie van de API's lezen voordat je gaat troubleshooten. Het is belangrijk om te weten wat er allemaal mogelijk is met de API's en hoe je ze kunt gebruiken.",
+      en: "Reading the documentation of the APIs before troubleshooting. It is important to know what is possible with the APIs and how to use them.",
     },
   },
 ]
