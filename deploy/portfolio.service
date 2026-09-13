@@ -1,0 +1,26 @@
+[Unit]
+Description=portfolio Fynn Tervoort
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/srv/portfolio
+Environment=NODE_ENV=production
+Environment=PORT=5200
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 5200
+Restart=always
+RestartSec=5
+# next reageert netjes op SIGTERM en eindigt met 143; zonder dit meldt systemd
+# elke stop als "Failed with result 'exit-code'".
+SuccessExitStatus=143
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+# Next schrijft tijdens het draaien in .next (cache); de rest mag alleen-lezen.
+ReadWritePaths=/srv/portfolio/.next
+
+[Install]
+WantedBy=multi-user.target
