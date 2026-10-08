@@ -65,7 +65,7 @@ export default async function ProjectPage({
       <main id="inhoud">
         <div className="shell pb-16 pt-12 sm:pt-16">
           <Link
-            href={`/${lang}#werk`}
+            href={`/${lang}/werk`}
             className="label-caps inline-flex items-center gap-2 transition-colors hover:!text-ink"
           >
             <ArrowLeft className="size-3.5" />

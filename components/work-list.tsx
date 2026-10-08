@@ -6,15 +6,15 @@ import type { Dict, Lang } from "@/content/dictionaries"
 import type { Project } from "@/content/projects"
 import { hasDetail, orderedProjects } from "@/lib/content"
 
+/** Uitgelicht project plus één rij van twee. De rest staat op /werk. */
+const HOME_COUNT = 3
+
 /**
- * Werk op een zwarte band, met de screenshots als grote afgeronde vlakken. Het
- * uitgelichte project loopt over de volle breedte, de rest staat twee naast
- * elkaar — zonder dat verschil is het een uniform kaartenraster, en dat is
- * precies wat deze sectie niet moet zijn.
+ * Werk op een zwarte band, met de screenshots als grote afgeronde vlakken. Op
+ * de homepage een selectie; alle projecten staan op de eigen werkpagina.
  */
 export function WorkList({ dict, lang }: { dict: Dict; lang: Lang }) {
   const projects = orderedProjects()
-  const [featured, ...rest] = projects
 
   return (
     <section
@@ -31,25 +31,60 @@ export function WorkList({ dict, lang }: { dict: Dict; lang: Lang }) {
           tone="band"
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {featured ? (
-            <Reveal className="block sm:col-span-2">
-              <Card project={featured} dict={dict} lang={lang} wide />
-            </Reveal>
-          ) : null}
+        <ProjectGrid
+          projects={projects.slice(0, HOME_COUNT)}
+          dict={dict}
+          lang={lang}
+        />
 
-          {rest.map((project, i) => (
-            <Reveal
-              key={project.slug}
-              className="block"
-              delay={Math.min(i, 3) * 80}
-            >
-              <Card project={project} dict={dict} lang={lang} />
-            </Reveal>
-          ))}
-        </div>
+        {projects.length > HOME_COUNT ? (
+          <div className="mt-12 text-center">
+            <Link href={`/${lang}/werk`} className="pill pill-outline">
+              {dict.work.all} ({projects.length})
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </div>
+        ) : null}
       </div>
     </section>
+  )
+}
+
+/**
+ * Het eerste project loopt over de volle breedte, de rest staat twee naast
+ * elkaar — zonder dat verschil is het een uniform kaartenraster, en dat is
+ * precies wat dit niet moet zijn. Alleen op een zwarte band te gebruiken: de
+ * kaarten hebben de band-kleuren.
+ */
+export function ProjectGrid({
+  projects,
+  dict,
+  lang,
+}: {
+  projects: Project[]
+  dict: Dict
+  lang: Lang
+}) {
+  const [featured, ...rest] = projects
+
+  return (
+    <div className="mt-14 grid gap-6 sm:grid-cols-2">
+      {featured ? (
+        <Reveal className="block sm:col-span-2">
+          <Card project={featured} dict={dict} lang={lang} wide />
+        </Reveal>
+      ) : null}
+
+      {rest.map((project, i) => (
+        <Reveal
+          key={project.slug}
+          className="block"
+          delay={Math.min(i, 3) * 80}
+        >
+          <Card project={project} dict={dict} lang={lang} />
+        </Reveal>
+      ))}
+    </div>
   )
 }
 

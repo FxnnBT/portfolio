@@ -19,6 +19,7 @@ export function SiteHeader({
     { href: `/${lang}#werk`, label: dict.nav.work },
     { href: `/${lang}#over`, label: dict.nav.about },
     { href: `/${lang}#diensten`, label: dict.nav.services },
+    { href: `/${lang}#fynnworks`, label: dict.nav.fynnworks },
     { href: `/${lang}#skills`, label: dict.nav.skills },
     { href: `/${lang}#contact`, label: dict.nav.contact },
     { href: `/${lang}/cv`, label: dict.nav.cv },
@@ -38,7 +39,7 @@ export function SiteHeader({
           aria-label={dict.nav.label}
           className="flex items-center gap-6 sm:gap-8"
         >
-          {/* Onder lg passen zes labels niet naast de naam en de taalwissel;
+          {/* Onder lg passen zeven labels niet naast de naam en de taalwissel;
               daar neemt het hamburgermenu ze over. */}
           <ul className="hidden items-center gap-7 lg:flex">
             {sections.map((s) => (

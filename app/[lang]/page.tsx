@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { About } from "@/components/about"
 import { ContactBand } from "@/components/contact-band"
+import { FynnworksBand } from "@/components/fynnworks-band"
 import { Hero } from "@/components/hero"
 import { Services } from "@/components/services"
 import { SiteHeader } from "@/components/site-header"
@@ -34,6 +35,7 @@ export default async function HomePage({
         <Services dict={dict} />
         <WorkList dict={dict} lang={lang} />
         <About dict={dict} lang={lang} />
+        <FynnworksBand dict={dict} lang={lang} />
         <Skills dict={dict} lang={lang} />
         <ContactBand dict={dict} />
       </main>

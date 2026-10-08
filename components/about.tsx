@@ -22,6 +22,7 @@ export function About({ dict, lang }: { dict: Dict; lang: Lang }) {
     },
     { key: dict.about.facts.based, value: dict.about.facts.basedValue },
     { key: dict.about.facts.company, value: "fynnworks", href: SITE.company },
+    { key: dict.about.facts.internship, value: dict.about.facts.internshipValue },
   ]
 
   return (

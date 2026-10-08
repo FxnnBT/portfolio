@@ -32,6 +32,7 @@ const nl = {
     work: "Werk",
     about: "Over",
     services: "Wat ik doe",
+    fynnworks: "fynnworks",
     skills: "Skills",
     contact: "Contact",
     cv: "CV",
@@ -43,7 +44,6 @@ const nl = {
     menuClose: "Menu sluiten",
   },
   hero: {
-    badge: "Beschikbaar voor stage",
     lead: "Ik bouw websites die",
     accent: "blijven draaien.",
     sub: `${SCHOOL.program.nl} in opleiding aan het ${SCHOOL.name}, en oprichter van fynnworks. Ik bouw sites voor ondernemers en zet ze van begin tot eind zelf online.`,
@@ -93,6 +93,9 @@ const nl = {
     read: "Lees het proces",
     visit: "Bekijk de site",
     repo: "Broncode",
+    all: "Alle projecten",
+    pageLead: "Alle",
+    pageAccent: "projecten",
     kinds: {
       werk: "Klantwerk",
       school: "School",
@@ -112,7 +115,36 @@ const nl = {
       based: "Woonplaats",
       basedValue: "Amsterdam",
       company: "Eigen bedrijf",
+      internship: "Stage",
+      internshipValue: "Beschikbaar",
     },
+  },
+  // Prijzen en beloftes komen letterlijk van fynnworks.nl (C:ynnworks,
+  // content/dictionaries.ts). Verandert daar iets, pas het dan hier ook aan.
+  fynnworks: {
+    label: "fynnworks — mijn webbureau",
+    lead: "Studentenprijzen,",
+    accent: "geen studentenwerk.",
+    body: "Via fynnworks bouw ik landingspagina's, bedrijfssites en webshops voor zzp en mkb. Geen bureautarief: je praat direct met degene die het bouwt, en je ziet het ontwerp voordat er één regel code staat.",
+    vatNote: "Richtprijzen, inclusief btw.",
+    items: [
+      {
+        name: "Landingspagina",
+        price: "vanaf €550",
+        body: "Eén pagina die één ding doet: bezoekers omzetten in aanvragen. Binnen twee weken live.",
+      },
+      {
+        name: "Multi-page site",
+        price: "vanaf €1.450",
+        body: "Meerdere pagina's, een duidelijk verhaal en een structuur waar je jaren mee vooruit kunt.",
+      },
+      {
+        name: "Maatwerk",
+        price: "op aanvraag",
+        body: "Webshop, boekingssysteem, portaal met inlog. Alles wat verder gaat dan een brochure.",
+      },
+    ],
+    cta: "Naar fynnworks.nl",
   },
   skills: {
     lead: "Wat ik",
@@ -232,6 +264,7 @@ const en: Dict = {
     work: "Work",
     about: "About",
     services: "What I do",
+    fynnworks: "fynnworks",
     skills: "Skills",
     contact: "Contact",
     cv: "CV",
@@ -243,7 +276,6 @@ const en: Dict = {
     menuClose: "Close menu",
   },
   hero: {
-    badge: "Available for an internship",
     lead: "I build websites that",
     accent: "stay up.",
     sub: `${SCHOOL.program.en} student at ${SCHOOL.name} and founder of fynnworks. I build sites for small businesses and take them all the way to live myself.`,
@@ -293,6 +325,9 @@ const en: Dict = {
     read: "Read the process",
     visit: "Visit the site",
     repo: "Source code",
+    all: "All projects",
+    pageLead: "All",
+    pageAccent: "projects",
     kinds: {
       werk: "Client work",
       school: "School",
@@ -312,7 +347,34 @@ const en: Dict = {
       based: "Based in",
       basedValue: "Amsterdam",
       company: "Own business",
+      internship: "Internship",
+      internshipValue: "Available",
     },
+  },
+  fynnworks: {
+    label: "fynnworks — my web studio",
+    lead: "Student rates,",
+    accent: "not student work.",
+    body: "Through fynnworks I build landing pages, business sites and web shops for freelancers and small businesses. No agency rate: you talk directly to the person building it, and you see the design before a single line of code exists.",
+    vatNote: "Indicative prices, including VAT.",
+    items: [
+      {
+        name: "Landing page",
+        price: "from €550",
+        body: "One page doing one job: turning visitors into enquiries. Live within two weeks.",
+      },
+      {
+        name: "Multi-page site",
+        price: "from €1,450",
+        body: "Multiple pages, a clear story, and a structure that lasts you years.",
+      },
+      {
+        name: "Custom build",
+        price: "on request",
+        body: "Web shop, booking system, portal with logins. Anything beyond a brochure.",
+      },
+    ],
+    cta: "Visit fynnworks.nl",
   },
   skills: {
     lead: "What I",

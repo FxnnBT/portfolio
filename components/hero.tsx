@@ -11,17 +11,10 @@ export function Hero({ dict, lang }: { dict: Dict; lang: Lang }) {
   return (
     <section className="pt-16 sm:pt-24">
       <div className="shell text-center">
-        {/* Het enige stukje kleuraccent op de pagina: een groen puntje dat zegt
-            dat er iets te halen valt. Dat is de reden dat iemand hier is. */}
-        <p className="label-caps inline-flex items-center gap-2.5 rounded-full border border-line px-4 py-2">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full rounded-full bg-emerald-500/70" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-600" />
-          </span>
-          {dict.hero.badge}
-        </p>
-
-        <h1 className="display mx-auto mt-8 max-w-4xl">
+        {/* Geen "beschikbaar voor stage"-pilletje met groen puntje hierboven:
+            dat staat op elke template-site. Stage staat bij de feiten onder
+            "Over mij". */}
+        <h1 className="display mx-auto max-w-4xl">
           {dict.hero.lead} <span className="accent">{dict.hero.accent}</span>
         </h1>
 

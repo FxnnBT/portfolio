@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   }))
 
+  const workIndex = LANGS.map((lang) => ({
+    url: `${SITE.url}/${lang}/werk`,
+    lastModified: now,
+    priority: 0.8,
+  }))
+
   const work = LANGS.flatMap((lang) =>
     projects.filter(hasDetail).map((p) => ({
       url: `${SITE.url}/${lang}/werk/${p.slug}`,
@@ -31,5 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  return [...home, ...work, ...cv]
+  return [...home, ...workIndex, ...work, ...cv]
 }
