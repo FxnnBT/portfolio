@@ -48,6 +48,17 @@ export function About({ dict, lang }: { dict: Dict; lang: Lang }) {
         </Reveal>
 
         <Reveal delay={120}>
+          {/* Gewone <img> om dezelfde reden als bij de projectkaarten. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/fynn.jpg"
+            alt={dict.about.photoAlt}
+            width={800}
+            height={1000}
+            loading="lazy"
+            decoding="async"
+            className="mb-6 aspect-[4/5] w-full sm:max-w-xs rounded-[var(--radius-card)] object-cover"
+          />
           <dl className="rounded-[var(--radius-card)] border border-line bg-paper-soft p-6 sm:p-8">
             {facts.map((fact, i) => (
               <div

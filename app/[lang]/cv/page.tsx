@@ -71,21 +71,33 @@ export default async function CvPage({
           {/* Op het scherm een vel papier op een zachte achtergrond; bij het
               printen is het vel de pagina zelf. */}
           <article className="mx-auto mt-6 max-w-[52rem] rounded-[var(--radius-card)] border border-line bg-paper px-6 py-10 sm:px-12 sm:py-14 print:m-0 print:max-w-none print:rounded-none print:border-0 print:p-0">
-            <header className="pb-8 print:pb-5">
-              <h1 className="text-5xl leading-none tracking-[-0.04em] sm:text-6xl print:!text-5xl">
-                Fynn <span className="accent">Tervoort</span>
-              </h1>
-              <p className="mt-4 text-lg text-muted">{dict.cv.role}</p>
-              <ul className="label mt-6 flex flex-wrap gap-x-5 gap-y-1.5">
-                <li>{dict.cv.location}</li>
-                {links.map((l) => (
-                  <li key={l.href}>
-                    <a href={l.href} className="transition-colors hover:text-ink">
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <header className="pb-8 sm:flex sm:items-start sm:justify-between sm:gap-8 print:pb-5">
+              {/* Niet lazy: de pdf wordt in één keer geprint, en dan moet de
+                  foto er al staan. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/fynn.jpg"
+                alt={dict.about.photoAlt}
+                width={800}
+                height={1000}
+                className="mb-6 aspect-[4/5] w-28 shrink-0 rounded-2xl object-cover sm:order-2 sm:mb-0 sm:w-32"
+              />
+              <div>
+                <h1 className="text-5xl leading-none tracking-[-0.04em] sm:text-6xl print:!text-5xl">
+                  Fynn <span className="accent">Tervoort</span>
+                </h1>
+                <p className="mt-4 text-lg text-muted">{dict.cv.role}</p>
+                <ul className="label mt-6 flex flex-wrap gap-x-5 gap-y-1.5">
+                  <li>{dict.cv.location}</li>
+                  {links.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href} className="transition-colors hover:text-ink">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </header>
 
             <Row title={dict.cv.profile}>

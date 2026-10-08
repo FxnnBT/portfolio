@@ -32,9 +32,16 @@ afdruk van de cv-pagina, dus na een wijziging opnieuw printen (Git Bash, met
 
 ```bash
 for l in nl en; do
-  "/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new     --no-pdf-header-footer --print-to-pdf="public/cv/fynn-tervoort-cv-$l.pdf"     "http://localhost:5200/$l/cv"
+  "/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new \
+    --user-data-dir="$TEMP/chrome-cv" --no-pdf-header-footer \
+    --print-to-pdf="$(pwd -W)/public/cv/fynn-tervoort-cv-$l.pdf" \
+    "http://localhost:5200/$l/cv"
 done
 ```
+
+Het absolute pad is nodig: met `public/cv/...` schrijft Chrome niets weg en
+blijft de oude pdf gewoon staan. Het eigen profiel houdt de print los van een
+Chrome die al openstaat. Kijk na het printen of de bestandsgrootte veranderd is.
 
 ## Nog invullen
 

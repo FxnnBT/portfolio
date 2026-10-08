@@ -105,6 +105,7 @@ const nl = {
   about: {
     lead: "Over",
     accent: "mij",
+    photoAlt: "Portret van Fynn Tervoort",
     body: [
       "Ik ben %AGE% en zit op het %SCHOOL%, waar ik %PROGRAM% doe. Programmeren begon als iets wat ik naast school deed en werd het snelste onderdeel van mijn week.",
       "Naast school run ik fynnworks, mijn eigen webbureau, ingeschreven bij de KvK. Ik bouw daar betaalde sites voor ondernemers: theatermakers, winkels. Dat leert me dingen die een schoolopdracht niet leert. Een deadline die van iemand anders is, een klant die iets anders bedoelt dan hij zegt, en een site die ook nog moet werken als ik er niet naar kijk.",
@@ -337,6 +338,7 @@ const en: Dict = {
   about: {
     lead: "About",
     accent: "me",
+    photoAlt: "Portrait of Fynn Tervoort",
     body: [
       "I am %AGE% and study %PROGRAM% at %SCHOOL%. Programming started as something I did next to school and quickly became the fastest part of my week.",
       "Alongside school I run fynnworks, my own web studio, registered with the Dutch chamber of commerce. I build paid sites for small businesses there: theatre makers, shops. That teaches me things a school assignment cannot. A deadline that belongs to someone else, a client who means something other than what they say, and a site that has to keep working when nobody is watching it.",
