@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
-import { getDictionary, isLang, LANGS } from "../content/dictionaries.ts"
+import { getDictionary, isLang, LANGS, SKILLS } from "../content/dictionaries.ts"
 import { projects } from "../content/projects.ts"
 import { getProject, hasDetail, nextProject, orderedProjects, t } from "./content.ts"
 import { age } from "./site.ts"
@@ -133,8 +133,17 @@ test("hasDetail is waar zodra er een opdracht, aanpak of reflectie is", () => {
 })
 
 test("age telt pas op de verjaardag een jaar op", () => {
-  // Iemand geboren op 1 januari 2009 is op oudejaarsavond 2025 nog 16.
-  assert.equal(age(new Date("2025-12-31T12:00:00Z")), 16)
-  assert.equal(age(new Date("2026-01-01T12:00:00Z")), 17)
+  // Geboren op 8 juni 2009: op 7 juni 2026 nog 16, een dag later 17.
+  assert.equal(age(new Date("2026-06-07T12:00:00Z")), 16)
+  assert.equal(age(new Date("2026-06-08T12:00:00Z")), 17)
   assert.equal(age(new Date("2026-09-09T12:00:00Z")), 17)
+})
+
+test("elke techniek in een projectstack staat ook bij de skills", () => {
+  const skills: readonly string[] = Object.values(SKILLS).flat()
+  for (const p of projects) {
+    for (const item of p.stack) {
+      assert.ok(skills.includes(item), `"${item}" uit ${p.slug} ontbreekt in SKILLS`)
+    }
+  }
 })

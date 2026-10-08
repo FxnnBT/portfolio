@@ -1,9 +1,10 @@
 import Link from "next/link"
+import { MobileMenu } from "@/components/mobile-menu"
 import type { Dict, Lang } from "@/content/dictionaries"
 
 /**
  * `otherHref` komt van de pagina zelf, niet uit usePathname. Daardoor is dit
- * een server component zonder een regel JavaScript.
+ * een server component; alleen het mobiele menu is een client component.
  */
 export function SiteHeader({
   lang,
@@ -18,10 +19,13 @@ export function SiteHeader({
     { href: `/${lang}#werk`, label: dict.nav.work },
     { href: `/${lang}#over`, label: dict.nav.about },
     { href: `/${lang}#diensten`, label: dict.nav.services },
+    { href: `/${lang}#skills`, label: dict.nav.skills },
+    { href: `/${lang}#contact`, label: dict.nav.contact },
+    { href: `/${lang}/cv`, label: dict.nav.cv },
   ]
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 print:hidden border-b border-line bg-paper/85 backdrop-blur-md">
       <div className="shell flex h-[4.5rem] items-center justify-between gap-4">
         <Link
           href={`/${lang}`}
@@ -34,10 +38,9 @@ export function SiteHeader({
           aria-label={dict.nav.label}
           className="flex items-center gap-6 sm:gap-8"
         >
-          {/* Ankerlinks verdwijnen op smalle schermen: drie labels naast een
-              naam, een taalwissel en een knop wordt daar een propvolle regel,
-              en de secties liggen toch één scroll onder elkaar. */}
-          <ul className="hidden items-center gap-7 md:flex">
+          {/* Onder lg passen zes labels niet naast de naam en de taalwissel;
+              daar neemt het hamburgermenu ze over. */}
+          <ul className="hidden items-center gap-7 lg:flex">
             {sections.map((s) => (
               <li key={s.href}>
                 <a
@@ -65,6 +68,16 @@ export function SiteHeader({
           >
             {dict.nav.cta}
           </a>
+
+          <MobileMenu
+            items={sections}
+            cta={{ href: `/${lang}#contact`, label: dict.nav.cta }}
+            labels={{
+              menu: dict.nav.menu,
+              open: dict.nav.menuOpen,
+              close: dict.nav.menuClose,
+            }}
+          />
         </nav>
       </div>
     </header>

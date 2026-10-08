@@ -25,5 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   )
 
-  return [...home, ...work]
+  const cv = LANGS.map((lang) => ({
+    url: `${SITE.url}/${lang}/cv`,
+    lastModified: now,
+    priority: 0.8,
+  }))
+
+  return [...home, ...work, ...cv]
 }

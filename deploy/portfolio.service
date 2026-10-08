@@ -7,6 +7,10 @@ Wants=network-online.target
 Type=simple
 User=pi
 WorkingDirectory=/srv/portfolio
+# SMTP voor het contactformulier — chmod 600, eigenaar root. Het streepje maakt
+# het bestand optioneel: zonder draait de site gewoon, alleen meldt het
+# formulier dan dat versturen mislukte.
+EnvironmentFile=-/etc/portfolio.env
 Environment=NODE_ENV=production
 Environment=PORT=5200
 ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 5200

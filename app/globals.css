@@ -65,6 +65,20 @@ body {
   color: var(--paper);
 }
 
+/* Alleen voor printen, dus voor de cv-pdf's. Op een marge van nul tekent
+   Chrome geen datum en URL in de kantlijn; de witruimte zit daarom in de
+   padding van de pagina zelf. */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    padding: 14mm 16mm;
+  }
+}
+
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;

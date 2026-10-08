@@ -1,11 +1,13 @@
 import { ArrowUpRight } from "lucide-react"
+import { ContactForm } from "@/components/contact-form"
 import { Reveal } from "@/components/reveal"
 import type { Dict } from "@/content/dictionaries"
 import { SITE } from "@/lib/site"
 
 /**
- * Afsluitende zwarte band. Geen formulier — dus geen server, geen SMTP, geen
- * spam om af te handelen. Vier regels die je aanklikt, en de mailknop groot.
+ * Afsluitende zwarte band: het formulier, en daaronder de plekken waar je me
+ * verder vindt. Het mailadres blijft zichtbaar — als het versturen faalt, of
+ * als iemand liever zelf mailt, moet er een weg zijn die niet van de Pi afhangt.
  */
 export function ContactBand({ dict }: { dict: Dict }) {
   const links = [
@@ -38,15 +40,16 @@ export function ContactBand({ dict }: { dict: Dict }) {
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-band-muted sm:text-lg">
               {dict.contact.intro}
             </p>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="pill pill-solid mt-9"
-            >
-              {dict.contact.cta}
-              <ArrowUpRight className="size-4" />
-            </a>
-            <p className="label mt-5 !text-band-muted">{SITE.email}</p>
           </div>
+          <div className="mx-auto mt-12 max-w-2xl">
+            <ContactForm dict={dict.contact} />
+          </div>
+          <p className="label mt-12 text-center !text-band-muted">
+            {dict.contact.form.orMail}{" "}
+            <a href={`mailto:${SITE.email}`} className="link text-band-fg">
+              {SITE.email}
+            </a>
+          </p>
         </Reveal>
 
         <Reveal delay={120}>

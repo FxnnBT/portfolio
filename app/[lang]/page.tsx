@@ -4,6 +4,7 @@ import { ContactBand } from "@/components/contact-band"
 import { Hero } from "@/components/hero"
 import { Services } from "@/components/services"
 import { SiteHeader } from "@/components/site-header"
+import { Skills } from "@/components/skills"
 import { StatsBand } from "@/components/stats-band"
 import { WorkList } from "@/components/work-list"
 import { getDictionary, isLang } from "@/content/dictionaries"
@@ -33,6 +34,7 @@ export default async function HomePage({
         <Services dict={dict} />
         <WorkList dict={dict} lang={lang} />
         <About dict={dict} lang={lang} />
+        <Skills dict={dict} lang={lang} />
         <ContactBand dict={dict} />
       </main>
     </>

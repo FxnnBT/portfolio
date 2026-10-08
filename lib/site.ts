@@ -15,7 +15,7 @@ export const SITE = {
   url: "https://portfolio.fynntervoort.com",
   email: "info@fynnworks.nl",
   github: "https://github.com/FxnnBT",
-  linkedin: "https://www.linkedin.com/in/fynn-tervoort-7243a8386/",
+  linkedin: "https://www.linkedin.com/in/fynn-tervoort",
   /** Het bedrijf dat je zelf hebt opgezet. */
   company: "https://fynnworks.nl",
 } as const
@@ -27,7 +27,7 @@ export const SITE = {
  * klopt hij dan niet. Alleen het jaar aftrekken is niet genoeg: dan word je op
  * 1 januari een jaar ouder in plaats van op je verjaardag.
  */
-const BIRTH_DATE = { year: 2009, month: 1, day: 1 }
+const BIRTH_DATE = { year: 2009, month: 6, day: 8 } as const
 
 /**
  * Leeftijd afgeleid in plaats van hardgecodeerd — anders staat er over een jaar

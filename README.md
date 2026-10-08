@@ -18,9 +18,23 @@ npm test        # controleert de inhoud (zie hieronder)
 | `lib/site.ts` | Je naam, domein, e-mail, GitHub, LinkedIn, school. **Begin hier.** |
 | `content/projects.ts` | Alle projecten, inclusief opdracht, aanpak en reflectie |
 | `content/dictionaries.ts` | Alle overige teksten, NL en EN naast elkaar, plus de marquee-lijst |
+| `app/actions.ts`, `lib/contact.ts` | Het contactformulier: versturen via SMTP, en de controles ervoor |
 | `app/globals.css` | Kleuren, typografie, pill-knoppen, alle design-tokens |
 | `deploy/portfolio.service` | systemd-unit voor de Pi, poort 5200 |
 | `public/work/` | Screenshots, `<slug>.jpg`, max ~1600px breed |
+| `public/cv/` | De cv-pdf's, geprint vanaf `/nl/cv` en `/en/cv` |
+
+## Het cv
+
+De teksten staan onder `cv` in `content/dictionaries.ts`. De pdf's zijn een
+afdruk van de cv-pagina, dus na een wijziging opnieuw printen (Git Bash, met
+`npm run build && npm start` aan):
+
+```bash
+for l in nl en; do
+  "/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new     --no-pdf-header-footer --print-to-pdf="public/cv/fynn-tervoort-cv-$l.pdf"     "http://localhost:5200/$l/cv"
+done
+```
 
 ## Nog invullen
 
@@ -104,13 +118,15 @@ verschillen.
 Volledige runbook, inclusief controles en wat te doen als het misgaat:
 **[deploy/DEPLOY.md](deploy/DEPLOY.md)**.
 
-## Waarom een draaiend proces en geen platte bestanden
+## Het contactformulier
 
-De site heeft geen formulier en geen database, dus hij zou ook als map met
-HTML-bestanden kunnen. Er draait nu wel een proces omdat de site expliciet **op
-poort 5200 moet luisteren**. Dat is dezelfde opzet als fynnworks, dus je hoeft
-er niets nieuws voor te leren.
+Een server action (`app/actions.ts`) die mailt via de Hostnet-mailbox van
+fynnworks, met nodemailer. De SMTP-gegevens komen uit omgevingsvariabelen: lokaal
+uit `.env.local` (zie `.env.example`), op de Pi uit `/etc/portfolio.env` — hoe
+die erop komt staat in [deploy/DEPLOY.md](deploy/DEPLOY.md).
 
-Wil je later toch zonder Node: zet `output: "export"` en `trailingSlash: true`
-in `next.config.ts`, laat `redirects()` weg (die doet dan niets — de `/` → `/nl`
-doorverwijzing moet dan naar de webserver) en serveer `out/` op poort 5200.
+Tegen spam: een onzichtbaar veld dat alleen bots invullen, en maximaal vijf
+berichten per uur per IP. Het formulier werkt ook zonder JavaScript.
+
+Daarom draait de site als Node-proces en niet als map met HTML-bestanden: een
+formulier heeft een server nodig. Het is dezelfde opzet als fynnworks.

@@ -32,10 +32,15 @@ const nl = {
     work: "Werk",
     about: "Over",
     services: "Wat ik doe",
+    skills: "Skills",
     contact: "Contact",
+    cv: "CV",
     cta: "Neem contact op",
     otherLang: "EN",
     otherLangLabel: "Switch to English",
+    menu: "Menu",
+    menuOpen: "Menu openen",
+    menuClose: "Menu sluiten",
   },
   hero: {
     badge: "Beschikbaar voor stage",
@@ -99,7 +104,7 @@ const nl = {
     accent: "mij",
     body: [
       "Ik ben %AGE% en zit op het %SCHOOL%, waar ik %PROGRAM% doe. Programmeren begon als iets wat ik naast school deed en werd het snelste onderdeel van mijn week.",
-      "Naast school run ik fynnworks, mijn eigen webbureau, ingeschreven bij de KvK. Ik bouw daar betaalde sites voor ondernemers: theatermakers, winkels. Dat leert me dingen die een schoolopdracht niet leert — een deadline die van iemand anders is, een klant die iets anders bedoelt dan hij zegt, en een site die ook nog moet werken als ik er niet naar kijk.",
+      "Naast school run ik fynnworks, mijn eigen webbureau, ingeschreven bij de KvK. Ik bouw daar betaalde sites voor ondernemers: theatermakers, winkels. Dat leert me dingen die een schoolopdracht niet leert. Een deadline die van iemand anders is, een klant die iets anders bedoelt dan hij zegt, en een site die ook nog moet werken als ik er niet naar kijk.",
     ],
     facts: {
       age: "Leeftijd",
@@ -109,17 +114,42 @@ const nl = {
       company: "Eigen bedrijf",
     },
   },
+  skills: {
+    lead: "Wat ik",
+    accent: "al kan",
+    intro:
+      "Geen balkjes of sterren. Bij elke techniek staat in welk project ik hem gebruikt heb, zodat je het zelf kunt nakijken.",
+    used: "Gebruikt in",
+    groups: {
+      frontend: "Frontend",
+      backend: "Backend",
+      server: "Server en tools",
+    },
+  },
   contact: {
     lead: "Laten we iets",
     accent: "bouwen.",
     intro:
-      "Stage, een project of gewoon een vraag — mail me of stuur een bericht op LinkedIn. Ik reageer meestal dezelfde dag.",
+      "Stage, een project of gewoon een vraag? Stuur hieronder een bericht of zoek me op via LinkedIn. Ik reageer meestal dezelfde dag.",
     email: "E-mail",
     github: "GitHub",
     linkedin: "LinkedIn",
     company: "fynnworks",
     companyNote: "Mijn webbureau",
-    cta: "Mail me",
+    form: {
+      name: "Naam",
+      message: "Bericht",
+      submit: "Verstuur",
+      sending: "Versturen…",
+      sent: "Verstuurd. Je hoort snel van me.",
+      privacy: "Je naam en e-mailadres gebruik ik alleen om je te antwoorden.",
+      orMail: "Liever zelf mailen?",
+      errors: {
+        invalid: "Vul je naam, een geldig e-mailadres en een bericht van minstens 10 tekens in.",
+        rate: "Je hebt net al een paar berichten gestuurd. Probeer het over een uur opnieuw, of mail me direct.",
+        server: `Versturen lukte niet. Mail me direct op ${SITE.email}.`,
+      },
+    },
   },
   project: {
     back: "Terug naar werk",
@@ -130,6 +160,54 @@ const nl = {
     year: "Jaar",
     kind: "Soort",
     next: "Volgende project",
+  },
+  cv: {
+    description: `Het cv van ${SITE.name}: ervaring, opleiding en skills.`,
+    role: `${SCHOOL.program.nl} in opleiding · oprichter van fynnworks`,
+    location: "Amsterdam",
+    download: "Download pdf",
+    profile: "Profiel",
+    profileBody: `${SCHOOL.program.nl} in opleiding aan het ${SCHOOL.name} en oprichter van fynnworks. Ik bouw websites en zet ze van begin tot eind zelf online: domein, hosting, mail en HTTPS. Daarna blijf ik degene die ze onderhoudt.`,
+    experience: "Ervaring",
+    education: "Opleiding",
+    skills: "Skills",
+    languages: "Talen",
+    languagesBody: "Nederlands, Engels",
+    // Geen looptijden als "(2 jaar 7 maanden)": die kloppen een maand later al
+    // niet meer.
+    jobs: [
+      {
+        role: "Oprichter en eigenaar",
+        org: "fynnworks",
+        place: "Amsterdam",
+        period: "sep 2026 – heden",
+        body: "Ingeschreven bij de KvK. Ik bouw betaalde sites voor ondernemers, zoals theatermakers en winkels, zet ze online en onderhoud ze.",
+      },
+      {
+        role: "Afwasser",
+        org: "NAP Amsterdam",
+        place: "Amsterdam",
+        period: "apr 2024 – heden",
+      },
+      {
+        role: "Zeilinstructeur (zelfstandig)",
+        org: "Zeilschool IJburg",
+        place: "Amsterdam",
+        period: "apr 2022 – heden",
+      },
+    ],
+    schools: [
+      {
+        role: `${SCHOOL.program.nl}, ${SCHOOL.level.nl}`,
+        org: SCHOOL.name,
+        period: "aug 2025 – dec 2028",
+      },
+      {
+        role: "Mavo, Techniek",
+        org: "Berlage Lyceum",
+        period: "aug 2022 – jun 2025",
+      },
+    ],
   },
   footer: {
     rights: "Alle rechten voorbehouden.",
@@ -154,10 +232,15 @@ const en: Dict = {
     work: "Work",
     about: "About",
     services: "What I do",
+    skills: "Skills",
     contact: "Contact",
+    cv: "CV",
     cta: "Get in touch",
     otherLang: "NL",
     otherLangLabel: "Schakel over naar Nederlands",
+    menu: "Menu",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
   },
   hero: {
     badge: "Available for an internship",
@@ -221,7 +304,7 @@ const en: Dict = {
     accent: "me",
     body: [
       "I am %AGE% and study %PROGRAM% at %SCHOOL%. Programming started as something I did next to school and quickly became the fastest part of my week.",
-      "Alongside school I run fynnworks, my own web studio, registered with the Dutch chamber of commerce. I build paid sites for small businesses there: theatre makers, shops. That teaches me things a school assignment cannot — a deadline that belongs to someone else, a client who means something other than what they say, and a site that has to keep working when nobody is watching it.",
+      "Alongside school I run fynnworks, my own web studio, registered with the Dutch chamber of commerce. I build paid sites for small businesses there: theatre makers, shops. That teaches me things a school assignment cannot. A deadline that belongs to someone else, a client who means something other than what they say, and a site that has to keep working when nobody is watching it.",
     ],
     facts: {
       age: "Age",
@@ -231,17 +314,42 @@ const en: Dict = {
       company: "Own business",
     },
   },
+  skills: {
+    lead: "What I",
+    accent: "can do",
+    intro:
+      "No progress bars or star ratings. Each technology lists the projects I used it in, so you can check for yourself.",
+    used: "Used in",
+    groups: {
+      frontend: "Frontend",
+      backend: "Backend",
+      server: "Server and tools",
+    },
+  },
   contact: {
     lead: "Let us build",
     accent: "something.",
     intro:
-      "An internship, a project or just a question — email me or send a message on LinkedIn. I usually reply the same day.",
+      "An internship, a project or just a question? Send a message below or find me on LinkedIn. I usually reply the same day.",
     email: "Email",
     github: "GitHub",
     linkedin: "LinkedIn",
     company: "fynnworks",
     companyNote: "My web studio",
-    cta: "Email me",
+    form: {
+      name: "Name",
+      message: "Message",
+      submit: "Send",
+      sending: "Sending…",
+      sent: "Sent. You will hear from me soon.",
+      privacy: "I only use your name and email address to reply to you.",
+      orMail: "Rather email yourself?",
+      errors: {
+        invalid: "Please enter your name, a valid email address and a message of at least 10 characters.",
+        rate: "You have just sent a few messages. Try again in an hour, or email me directly.",
+        server: `Sending failed. Please email me directly at ${SITE.email}.`,
+      },
+    },
   },
   project: {
     back: "Back to work",
@@ -252,6 +360,52 @@ const en: Dict = {
     year: "Year",
     kind: "Type",
     next: "Next project",
+  },
+  cv: {
+    description: `The CV of ${SITE.name}: experience, education and skills.`,
+    role: `${SCHOOL.program.en} student · founder of fynnworks`,
+    location: "Amsterdam",
+    download: "Download pdf",
+    profile: "Profile",
+    profileBody: `${SCHOOL.program.en} student at ${SCHOOL.name} and founder of fynnworks. I build websites and take them all the way to live myself: domain, hosting, mail and HTTPS. Afterwards I am the one who maintains them.`,
+    experience: "Experience",
+    education: "Education",
+    skills: "Skills",
+    languages: "Languages",
+    languagesBody: "Dutch, English",
+    jobs: [
+      {
+        role: "Founder and owner",
+        org: "fynnworks",
+        place: "Amsterdam",
+        period: "Sep 2026 – present",
+        body: "Registered with the Dutch chamber of commerce. I build paid sites for small businesses, such as theatre makers and shops, take them live and maintain them.",
+      },
+      {
+        role: "Dishwasher",
+        org: "NAP Amsterdam",
+        place: "Amsterdam",
+        period: "Apr 2024 – present",
+      },
+      {
+        role: "Sailing instructor (freelance)",
+        org: "Zeilschool IJburg",
+        place: "Amsterdam",
+        period: "Apr 2022 – present",
+      },
+    ],
+    schools: [
+      {
+        role: `${SCHOOL.program.en}, ${SCHOOL.level.en}`,
+        org: SCHOOL.name,
+        period: "Aug 2025 – Dec 2028",
+      },
+      {
+        role: "Mavo (pre-vocational secondary), Technology",
+        org: "Berlage Lyceum",
+        period: "Aug 2022 – Jun 2025",
+      },
+    ],
   },
   footer: {
     rights: "All rights reserved.",
@@ -282,3 +436,15 @@ export const MARQUEE = [
   "Raspberry Pi",
   "Next.js",
 ] as const
+
+/**
+ * De skills-sectie, per groep. Net als de marquee in beide talen gelijk; alleen
+ * de groepstitels staan in de dictionary. Welke projecten bij een techniek
+ * horen wordt afgeleid uit `stack` in content/projects.ts, dus een naam moet
+ * daar letterlijk hetzelfde gespeld zijn. lib/content.test.ts bewaakt dat.
+ */
+export const SKILLS = {
+  frontend: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Tailwind"],
+  backend: ["PHP", "Node", "MySQL"],
+  server: ["Linux", "Raspberry Pi", "systemd", "Git"],
+} as const satisfies Record<keyof Dict["skills"]["groups"], readonly string[]>

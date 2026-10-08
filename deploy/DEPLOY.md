@@ -80,6 +80,28 @@ commit terug (`git checkout <commit>`) en doorloop stap 1 t/m 3 opnieuw. Dat is
 sneller dan een backup-schema onderhouden voor een site die in 20 seconden
 bouwt.
 
+## Contactformulier (eenmalig)
+
+Het formulier mailt via dezelfde Hostnet-mailbox als fynnworks. De
+SMTP-regels staan al in `/etc/fynnworks.env`; kopieer alleen die, niet de rest
+(daar staat ook het admin-wachtwoord van fynnworks in):
+
+```bash
+ssh pi@192.168.1.240 '
+  sudo install -m 600 -o root -g root /dev/null /etc/portfolio.env
+  sudo grep "^SMTP_" /etc/fynnworks.env | sudo tee /etc/portfolio.env >/dev/null
+  sudo cp /srv/portfolio/deploy/portfolio.service /etc/systemd/system/
+  sudo systemctl daemon-reload
+  sudo systemctl restart portfolio'
+```
+
+Eerst `install`, dan pas `tee`: zo staat het wachtwoord geen moment in een
+bestand dat iedereen kan lezen. Doe dit ná een update met stap 1 t/m 2, want
+de nieuwe unit moet al op de Pi staan.
+
+Testen: stuur een bericht via het formulier. Komt er niets aan, kijk dan in
+`journalctl -u portfolio -n 50` naar `[contact] versturen mislukt`.
+
 ## De eerste keer (staat al gedaan)
 
 ```bash

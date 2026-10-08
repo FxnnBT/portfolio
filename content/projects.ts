@@ -51,8 +51,8 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     title: {
-      nl: "fynnworks — mijn eigen webbureau",
-      en: "fynnworks — my own web studio",
+      nl: "fynnworks | mijn eigen webbureau",
+      en: "fynnworks | my own web studio",
     },
     summary: {
       nl: "Op mijn zestiende een bedrijf ingeschreven en de site die klanten binnenhaalt zelf gebouwd: tweetalig, met contactformulier, klantbriefings en een beheerpagina waar ik werk en reviews vandaan beheer.",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     href: "https://fynnworks.nl",
     image: "/work/fynnworks.jpg",
     brief: {
-      nl: "Ik wilde websites bouwen voor ondernemers, maar zonder eigen site is er niets om naar te wijzen. De site moest dus twee dingen doen: laten zien wat ik kan, en het gesprek met een klant echt beginnen — niet alleen een mailadres tonen.",
+      nl: "Ik wilde websites bouwen voor ondernemers, maar zonder eigen site is er niets om naar te wijzen. De site moest dus twee dingen doen: laten zien wat ik kan, en het gesprek met een klant echt beginnen, niet alleen een mailadres tonen.",
       en: "I wanted to build websites for small businesses, but without a site of my own there is nothing to point at. So the site had to do two things: show what I can do, and actually start the conversation with a client instead of just listing an email address.",
     },
     process: [
@@ -71,21 +71,21 @@ export const projects: Project[] = [
         en: "Content first, design second. I put every piece of copy in a single file with Dutch and English side by side, so a translation can never end up half-finished.",
       },
       {
-        nl: "Contactformulier zelf gebouwd met een server action, validatie en een rate limit per IP. Spam wordt gemarkeerd, nooit geweigerd — een echte klant die ongelukkig formuleert mag niet stilletjes verdwijnen.",
-        en: "Built the contact form myself with a server action, validation and a per-IP rate limit. Spam gets flagged, never rejected — a real client who phrases things oddly must not vanish silently.",
+        nl: "Contactformulier zelf gebouwd met een server action, validatie en een rate limit per IP. Spam wordt gemarkeerd, nooit geweigerd, een echte klant die ongelukkig formuleert mag niet stilletjes verdwijnen.",
+        en: "Built the contact form myself with a server action, validation and a per-IP rate limit. Spam gets flagged, never rejected, a real client who phrases things oddly must not vanish silently.",
       },
       {
         nl: "Een briefingpagina achter een persoonlijke link: de klant vult daar rustig zijn wensen en beeldmateriaal in, in plaats van dat het over vijf WhatsApp-berichten verspreid raakt.",
         en: "A briefing page behind a personal link: the client fills in their wishes and images there at their own pace, instead of it being scattered over five WhatsApp messages.",
       },
       {
-        nl: "Deployment op een Raspberry Pi bij mij thuis: systemd houdt het proces in de lucht en herstart het als het omvalt. Klantsites zet ik bij een hostingpartij, maar mijn eigen site beheer ik zelf — daar leer ik hoe een server echt werkt.",
-        en: "Deployed on a Raspberry Pi at home: systemd keeps the process alive and restarts it when it falls over. Client sites go to a hosting provider, but I run my own site myself — that is where I learn how a server actually works.",
+        nl: "Deployment op een Raspberry Pi bij mij thuis: systemd houdt het proces in de lucht en herstart het als het omvalt. Klantsites zet ik bij een hostingpartij, maar mijn eigen site beheer ik zelf en daar leer ik hoe een server echt werkt.",
+        en: "Deployed on a Raspberry Pi at home: systemd keeps the process alive and restarts it when it falls over. Client sites go to a hosting provider, but I run my own site myself and that is where I learn how a server actually works.",
       },
     ],
     learned: {
-      nl: "Dat het bouwen het makkelijke deel is. De moeilijke vragen waren juridisch en zakelijk: wat moet er wettelijk op een site van een bedrijf staan, wat kost mijn uur, wat beloof ik een klant precies. Daar bestaat geen documentatie voor die je even opzoekt. Technisch leerde ik het meest van de Pi — een proces dat op mijn laptop draait is nog geen dienst die blijft draaien.",
-      en: "That building is the easy part. The hard questions were legal and commercial: what a business site is legally required to show, what my hour is worth, what exactly I promise a client. There is no documentation you can just look up for that. Technically the Pi taught me the most — a process running on my laptop is not yet a service that stays up.",
+      nl: "Dat het bouwen het makkelijke deel is. De moeilijke vragen waren juridisch en zakelijk: wat moet er wettelijk op een site van een bedrijf staan, wat kost mijn uur, wat beloof ik een klant precies. Daar bestaat geen documentatie voor die je even opzoekt. Technisch leerde ik het meest van de Pi, want dat is een proces dat op mijn laptop draait en is nog geen dienst die blijft draaien.",
+      en: "That building is the easy part. The hard questions were legal and commercial: what a business site is legally required to show, what my hour is worth, what exactly I promise a client. There is no documentation you can just look up for that. Technically the Pi taught me the most: a process running on my laptop is not yet a service that stays up.",
     },
   },
   {
@@ -110,8 +110,8 @@ export const projects: Project[] = [
     },
     process: [
       {
-        nl: "Uitgezocht wat er echt toe doet voor deze bezoeker. Dat bleek niet de biografie maar de vraag wanneer je kaartjes kunt kopen — dus de speellijst staat hoog en verleden data verdwijnen vanzelf.",
-        en: "Worked out what actually matters to this visitor. That turned out to be not the biography but the question of when you can buy tickets — so the schedule sits high on the page and past dates drop off by themselves.",
+        nl: "Uitgezocht wat er echt toe doet voor deze bezoeker. Dat bleek niet de biografie maar de vraag wanneer je kaartjes kunt kopen, dus de speellijst staat hoog en verleden data verdwijnen vanzelf.",
+        en: "Worked out what actually matters to this visitor. That turned out to be not the biography but the question of when you can buy tickets, so the schedule sits high on the page and past dates drop off by themselves.",
       },
       {
         nl: "Recensiecitaten als ontwerpelement in plaats van als voetnoot: een quote uit de Volkskrant doet meer dan drie alinea's zelfgeschreven lof.",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       },
     ],
     learned: {
-      nl: "Dat een klant zijn eigen site anders leest dan zijn publiek. Hij wilde zijn biografie bovenaan; de bezoeker kwam voor speeldata. Dat gesprek voeren — met argumenten in plaats van smaak — was lastiger dan het bouwen.",
+      nl: "Dat een klant zijn eigen site anders leest dan zijn publiek. Hij wilde zijn biografie bovenaan; de bezoeker kwam voor speeldata. Dat gesprek voeren met argumenten in plaats van smaak was lastiger dan het bouwen.",
       en: "That a client reads their own site differently than their audience does. He wanted his biography at the top; visitors came for tour dates. Having that conversation, with reasons instead of taste, was harder than the build.",
     },
   },
@@ -181,8 +181,8 @@ export const projects: Project[] = [
       },
     ],
     learned: {
-      nl: "Dat de vraag welke techniek ik gebruik bijna altijd de verkeerde eerste vraag is. Zodra ik opschreef wat de site móest doen, viel de helft van de techniek vanzelf af — en wat overblijft kan niet omvallen.",
-      en: "That asking which technology to use is almost always the wrong first question. Once I wrote down what the site had to do, half the technology fell away by itself — and what remains cannot fall over.",
+      nl: "Dat de vraag welke techniek ik gebruik bijna altijd de verkeerde eerste vraag is. Zodra ik opschreef wat de site móest doen, viel de helft van de techniek vanzelf af en wat overblijft kan niet omvallen.",
+      en: "That asking which technology to use is almost always the wrong first question. Once I wrote down what the site had to do, half the technology fell away by itself and what remains cannot fall over.",
     },
   },
   {
@@ -204,6 +204,7 @@ export const projects: Project[] = [
       en: "A dashboard where you can see certain info about what is happening in a smart home. It is a school assignment, the data is real data.",
     },
     stack: ["PHP", "JavaScript", "HTML", "CSS"],
+    href: "https://www.fynntervoort.com/SolarScope/",
     brief: {
       nl: "Doel was om te spelen met API's en data visualisatie. De opdracht was om een dashboard te maken waar je bepaalde info kan zien over wat er in een smart home gebeurt.",
       en: "The goal was to play with APIs and data visualization. The assignment was to create a dashboard where you can see certain info about what is happening in a smart home.",
