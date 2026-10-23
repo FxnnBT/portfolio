@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Reveal } from "@/components/reveal"
 import { SectionHeading } from "@/components/section-heading"
+import { TechIcon } from "@/components/tech-icon"
 import { type Dict, type Lang, SKILLS } from "@/content/dictionaries"
 import { projects } from "@/content/projects"
 import { hasDetail } from "@/lib/content"
@@ -33,13 +34,21 @@ export function Skills({ dict, lang }: { dict: Dict; lang: Lang }) {
           {groups.map(([key, names], i) => (
             <Reveal key={key} delay={Math.min(i, 3) * 70}>
               <div className="grid gap-6 border-b border-line py-8 sm:grid-cols-[12rem_1fr] sm:gap-8 sm:py-10">
-                <h3 className="label-caps pt-1.5">{dict.skills.groups[key]}</h3>
+                <div>
+                  <h3 className="label-caps pt-1.5">{dict.skills.groups[key]}</h3>
+                  {key === "ai" ? (
+                    <p className="mt-3 text-sm text-muted">{dict.skills.aiNote}</p>
+                  ) : null}
+                </div>
                 <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
                   {names.map((name) => {
                     const used = projects.filter((p) => p.stack.includes(name))
                     return (
                       <li key={name}>
-                        <span className="text-xl tracking-tight">{name}</span>
+                        <span className="flex items-center gap-3 text-xl tracking-tight">
+                          <TechIcon name={name} className="size-5 shrink-0" />
+                          {name}
+                        </span>
                         {used.length > 0 ? (
                           <p className="mt-1 text-sm text-muted">
                             {dict.skills.used}{" "}

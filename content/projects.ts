@@ -58,7 +58,7 @@ export const projects: Project[] = [
       nl: "Op mijn zestiende een bedrijf ingeschreven en de site die klanten binnenhaalt zelf gebouwd: tweetalig, met contactformulier, klantbriefings en een beheerpagina waar ik werk en reviews vandaan beheer.",
       en: "I registered a business at sixteen and built the site that brings in the clients myself: bilingual, with a contact form, client briefings and an admin page where I manage work and reviews.",
     },
-    stack: ["Next.js", "TypeScript", "Tailwind", "Node", "Linux", "Raspberry Pi"],
+    stack: ["Next.js", "TypeScript", "Tailwind", "Node", "Linux", "Raspberry Pi", "Claude Code"],
     href: "https://fynnworks.nl",
     image: "/work/fynnworks.jpg",
     brief: {
@@ -161,7 +161,7 @@ export const projects: Project[] = [
       nl: "Tweetalige portfolio zonder formulier of database. Draait als systemd-service, naast fynnworks op dezelfde Raspberry Pi.",
       en: "A bilingual portfolio with no form and no database. Runs as a systemd service, alongside fynnworks on the same Raspberry Pi.",
     },
-    stack: ["Next.js", "TypeScript", "Tailwind", "systemd", "Raspberry Pi"],
+    stack: ["Next.js", "TypeScript", "Tailwind", "systemd", "Raspberry Pi", "Claude Code"],
     brief: {
       nl: "Ik had een plek nodig die los staat van fynnworks: dat is het bedrijf, dit ben ik. Eén site die tegelijk mijn visitekaartje is en mijn schoolportfolio, zonder dat het één van beide half doet.",
       en: "I needed a place separate from fynnworks: that is the company, this is me. One site that is both my calling card and my school portfolio, without doing either of them halfway.",

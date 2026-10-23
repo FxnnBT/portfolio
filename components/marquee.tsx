@@ -1,3 +1,5 @@
+import { TechIcon } from "@/components/tech-icon"
+
 /**
  * Doorlopende band met de namen waar ik mee werk.
  *
@@ -54,7 +56,10 @@ function Row({
           key={item}
           className="flex items-center gap-8 whitespace-nowrap px-8 text-lg tracking-tight sm:text-xl"
         >
-          {item}
+          <span className="flex items-center gap-3">
+            <TechIcon name={item} className="size-5 shrink-0" />
+            {item}
+          </span>
           <span aria-hidden className="size-1 rounded-full bg-line" />
         </li>
       ))}

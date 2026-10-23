@@ -157,7 +157,10 @@ const nl = {
       frontend: "Frontend",
       backend: "Backend",
       server: "Server en tools",
+      ai: "AI",
     },
+    aiNote:
+      "AI hoort bij het vak, en ik gebruik het ook. Ik bouw met Claude Code: het schrijft mee, ik bepaal wat erin komt en wat er live gaat.",
   },
   contact: {
     lead: "Laten we iets",
@@ -388,7 +391,10 @@ const en: Dict = {
       frontend: "Frontend",
       backend: "Backend",
       server: "Server and tools",
+      ai: "AI",
     },
+    aiNote:
+      "AI is part of the trade, and I use it. I build with Claude Code: it helps write the code, I decide what goes in and what goes live.",
   },
   contact: {
     lead: "Let us build",
@@ -499,6 +505,7 @@ export const MARQUEE = [
   "Linux",
   "Raspberry Pi",
   "Next.js",
+  "Claude Code",
 ] as const
 
 /**
@@ -511,4 +518,5 @@ export const SKILLS = {
   frontend: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Tailwind"],
   backend: ["PHP", "Node", "MySQL"],
   server: ["Linux", "Raspberry Pi", "systemd", "Git"],
+  ai: ["Claude Code"],
 } as const satisfies Record<keyof Dict["skills"]["groups"], readonly string[]>
