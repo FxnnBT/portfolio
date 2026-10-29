@@ -220,7 +220,7 @@ const nl = {
         body: "Ingeschreven bij de KvK. Ik bouw betaalde sites voor ondernemers, zoals theatermakers en winkels, zet ze online en onderhoud ze.",
       },
       {
-        role: "Afwasser",
+        role: "Keukenassistent",
         org: "NAP Amsterdam",
         place: "Amsterdam",
         period: "apr 2024 – heden",
@@ -452,7 +452,7 @@ const en: Dict = {
         body: "Registered with the Dutch chamber of commerce. I build paid sites for small businesses, such as theatre makers and shops, take them live and maintain them.",
       },
       {
-        role: "Dishwasher",
+        role: "Kitchen assistant",
         org: "NAP Amsterdam",
         place: "Amsterdam",
         period: "Apr 2024 – present",
