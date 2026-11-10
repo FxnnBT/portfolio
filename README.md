@@ -58,21 +58,23 @@ Zoek op `TODO` — die staan er bewust zichtbaar in in plaats van stilletjes lee
 
 ## Het ontwerp
 
-Licht, met volvlak zwarte banden ertussen. De opbouw van de homepage is bewust
-wit → zwart → wit → zwart → wit → zwart: elke sectie zet zich af tegen de
-vorige. Zonder die afwisseling wordt het één lange kolom en voelt de pagina
-leeg, hoeveel er ook op staat.
+Warm donker, met gebroken wit als tekstkleur. De opbouw van de homepage is
+bewust donker → band → donker → band: de banden zijn een trede lichter, zodat
+elke sectie zich afzet tegen de vorige. Zonder die afwisseling wordt het één
+lange kolom en voelt de pagina leeg, hoeveel er ook op staat. Alleen het cv
+print licht, want dat gaat op wit papier.
 
-- **Koppen staan op gewicht 400, niet vet.** De schaal doet het werk. Zwaar
-  erbovenop maakt ze schreeuwerig in plaats van groot. De negatieve tracking
-  (`letter-spacing: -0.04em`) hoort daarbij.
-- **Elke kop heeft één cursief accent.** Dat staat in de dictionary als `lead` +
-  `accent`, want in het Engels valt de klemtoon vaak op een ander woord dan in
-  het Nederlands.
-- **Twee lettertypen.** Inter voor alles wat je leest, Anonymous Pro (monospace)
-  alleen voor bijschriften, nummers en labels.
-- **Knoppen zijn pillen**, zwart op wit en omgekeerd op de zwarte banden. Die
-  omkering zit in `.band .pill-solid` in `globals.css`, niet in de componenten.
+- **Koppen staan op gewicht 600** met strakke tracking
+  (`letter-spacing: -0.035em`).
+- **Elke kop heeft één accent in een zachtere tint.** Dat staat in de
+  dictionary als `lead` + `accent`, want in het Engels valt de klemtoon vaak op
+  een ander woord dan in het Nederlands.
+- **Twee lettertypen.** Manrope voor alles wat je leest, Anonymous Pro
+  (monospace) alleen voor bijschriften, nummers en labels.
+- **Knoppen zijn pillen**: de primaire gebroken wit, de secundaire van matglas
+  (`.pill-outline` en `.glass` in `globals.css`).
+- **De golven in de hero** zijn een kleine WebGL-shader (`components/silk.tsx`).
+  Zonder WebGL blijft het stippenraster uit `.backdrop` staan.
 
 ## Een project toevoegen
 

@@ -20,7 +20,7 @@ export function Marquee({
 }) {
   return (
     <div
-      className="marquee relative overflow-hidden border-y border-line py-5"
+      className="marquee relative overflow-hidden border-y border-line py-3"
       aria-label={label}
     >
       <div className="marquee-track">
@@ -54,9 +54,11 @@ function Row({
       {items.map((item) => (
         <li
           key={item}
-          className="flex items-center gap-8 whitespace-nowrap px-8 text-lg tracking-tight sm:text-xl"
+          className="flex items-center gap-4 whitespace-nowrap px-4 text-lg tracking-tight sm:text-xl"
         >
-          <span className="flex items-center gap-3">
+          {/* De witruimte zit nu half in de pil, half in de gap: de afstand
+              tussen naam en puntje blijft gelijk. */}
+          <span className="marquee-item flex items-center gap-3 px-4 py-2">
             <TechIcon name={item} className="size-5 shrink-0" />
             {item}
           </span>

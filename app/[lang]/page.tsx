@@ -11,7 +11,7 @@ import { WorkList } from "@/components/work-list"
 import { getDictionary, isLang } from "@/content/dictionaries"
 
 /**
- * De volgorde is bewust wit → zwart → wit → zwart: elke sectie zet zich af
+ * De volgorde is bewust donker → band → donker → band: elke sectie zet zich af
  * tegen de vorige. Zonder die afwisseling wordt het één lange kolom en voelt
  * de pagina leeg, hoeveel er ook op staat.
  */

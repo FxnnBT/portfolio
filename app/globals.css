@@ -19,32 +19,32 @@
   --color-band-muted: var(--band-muted);
   --color-band-line: var(--band-line);
 
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-sans-face);
   --font-mono: var(--font-mono-face);
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --paper: #ffffff;
-  /* Nauwelijks van wit te onderscheiden, en precies daarom bruikbaar: het
-     scheidt secties zonder dat er een lijn of kader aan te pas komt. */
-  --paper-soft: #fbfbfb;
-  --ink: #000000;
-  --muted: #6b6f76;
-  --line: #e6e6e6;
+  /* Warm donker: bijna-zwart met een bruine ondertoon, tekst in gebroken wit.
+     Drie treden donker (paper → paper-soft → band) scheiden de secties. */
+  --paper: #100d0b;
+  --paper-soft: #161210;
+  --ink: #f2efeb;
+  --muted: #989591;
+  --line: #272421;
 
-  --band: #000000;
-  --band-fg: #ffffff;
-  --band-muted: #9ca0a6;
-  --band-line: #262626;
+  --band: #1c1815;
+  --band-fg: #f2efeb;
+  --band-muted: #989591;
+  --band-line: #322e2a;
 
   --radius-card: 20px;
   --radius-media: 24px;
 }
 
 html {
-  color-scheme: light;
+  color-scheme: dark;
   /* Bewust GEEN scroll-behavior: smooth.
      Chrome voert de sprong naar #contact bij het laden van /nl#contact dan uit
      als animatie, en die wordt afgebroken zodra React hydrateert — de bezoeker
@@ -74,6 +74,16 @@ body {
 }
 
 @media print {
+  /* Het cv gaat op wit papier: lichte tekst zou daar onzichtbaar zijn. */
+  :root {
+    color-scheme: light;
+    --paper: #ffffff;
+    --paper-soft: #fbfbfb;
+    --ink: #000000;
+    --muted: #6b6f76;
+    --line: #e6e6e6;
+  }
+
   body {
     padding: 14mm 16mm;
   }
@@ -85,39 +95,44 @@ body {
   border-radius: 4px;
 }
 
+@layer base {
+  /* Kaart- en lijsttitels dragen hetzelfde gewicht als de grote koppen. */
+  h3 {
+    font-weight: 600;
+  }
+}
+
 @layer components {
   /* ---- Typografie -------------------------------------------------------
-     Koppen staan op gewicht 400, niet vet. De schaal doet het werk, niet de
-     dikte — dat is het verschil tussen "groot en zwaar" en "groot en rustig".
-     De negatieve tracking hoort daarbij: op 72px valt normale spatiëring
-     uit elkaar. */
+     Koppen in Manrope 600 met strakke tracking: op 72px valt normale
+     spatiëring uit elkaar. */
   .display {
-    font-weight: 400;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    font-size: clamp(2.5rem, 1rem + 5.4vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    font-size: clamp(2.5rem, 1rem + 5.4vw, 4.75rem);
     text-wrap: balance;
   }
 
   .heading {
-    font-weight: 400;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
     font-size: clamp(1.875rem, 1rem + 2.6vw, 3.25rem);
     text-wrap: balance;
   }
 
   .stat {
-    font-weight: 400;
-    letter-spacing: -0.04em;
+    font-weight: 600;
+    letter-spacing: -0.035em;
     line-height: 1;
     font-size: clamp(2.5rem, 1.5rem + 3vw, 4rem);
   }
 
-  /* Het cursieve accent in elke kop. Één woordgroep per kop, meer niet —
-     dan is het geen accent meer. */
+  /* Het accent in elke kop: dezelfde letter, een tint zachter. Één woordgroep
+     per kop, meer niet — dan is het geen accent meer. */
   .accent {
-    font-style: italic;
+    color: color-mix(in srgb, currentColor 60%, transparent);
   }
 
   /* Kleine hoofdletters in mono voor bijschriften, nummers en labels. */
@@ -131,6 +146,7 @@ body {
   .label-caps {
     font-family: var(--font-mono), ui-monospace, monospace;
     font-size: 0.6875rem;
+    font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
@@ -157,11 +173,10 @@ body {
     align-items: center;
     gap: 0.625rem;
     border-radius: 999px;
-    padding: 0.9rem 1.75rem;
-    font-size: 0.8125rem;
+    padding: 0.9rem 1.6rem;
+    font-size: 0.9375rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    line-height: 1;
     white-space: nowrap;
     transition:
       transform 300ms var(--ease-out-expo),
@@ -184,28 +199,26 @@ body {
     color: var(--paper);
   }
 
+  /* Matglas: een zweem licht, een dunne rand en een glimlijn bovenaan. */
+  .glass,
   .pill-outline {
-    border: 1px solid var(--line);
+    background: rgb(242 239 235 / 0.06);
+    border: 1px solid rgb(242 239 235 / 0.14);
+    box-shadow: inset 0 1px 0 rgb(242 239 235 / 0.14);
     color: var(--ink);
   }
 
   .pill-outline:hover {
-    border-color: var(--ink);
+    background: rgb(242 239 235 / 0.1);
   }
 
-  /* Op een zwarte band draaien de rollen om. */
-  .band .pill-solid {
-    background: var(--paper);
-    color: var(--ink);
-  }
-
-  .band .pill-outline {
-    border-color: var(--band-line);
-    color: var(--band-fg);
-  }
-
-  .band .pill-outline:hover {
-    border-color: var(--band-fg);
+  /* Achtergrond van de hero: stippenraster met twee zachte lichtvlekken. */
+  .backdrop {
+    background-image:
+      radial-gradient(rgb(242 239 235 / 0.08) 1px, transparent 1px),
+      radial-gradient(56rem 22rem at 15% 40%, rgb(242 239 235 / 0.12), transparent 65%),
+      radial-gradient(48rem 20rem at 90% 45%, rgb(242 239 235 / 0.08), transparent 65%);
+    background-size: 28px 28px, auto, auto;
   }
 
   /* Onderstreping die vanuit links uitgroeit in plaats van te knipperen. */
@@ -243,8 +256,55 @@ body {
   animation: marquee 38s linear infinite;
 }
 
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+/* Matglazen pil achter een naam zodra de muis erop staat, met een lichtveeg
+   die eroverheen trekt. De band zelf loopt gewoon door. */
+.marquee-item {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 999px;
+  opacity: 0.62;
+  transition: opacity 220ms var(--ease-out-expo);
+}
+
+.marquee-item::before,
+.marquee-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.marquee-item::before {
+  background: linear-gradient(rgb(242 239 235 / 0.13), rgb(242 239 235 / 0.04));
+  box-shadow:
+    inset 0 0 0 1px rgb(242 239 235 / 0.2),
+    inset 0 1px 0 rgb(242 239 235 / 0.32);
+  transition: opacity 220ms var(--ease-out-expo);
+}
+
+.marquee-item::after {
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.26) 50%, transparent 62%);
+  transform: translateX(-100%);
+}
+
+.marquee-item:hover,
+.marquee-item:hover::before {
+  opacity: 1;
+}
+
+.marquee-item:hover::after {
+  opacity: 1;
+  animation: glisten 2.6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes glisten {
+  to {
+    transform: translateX(100%);
+  }
 }
 
 /* ---- Reveal-on-scroll ---------------------------------------------------
@@ -282,5 +342,10 @@ body {
 
   .pill:hover {
     transform: none;
+  }
+
+  .marquee-item:hover::after {
+    animation: none;
+    opacity: 0;
   }
 }

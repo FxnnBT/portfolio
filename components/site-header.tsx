@@ -26,7 +26,7 @@ export function SiteHeader({
   ]
 
   return (
-    <header className="sticky top-0 z-50 print:hidden border-b border-line bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 print:hidden bg-paper/60 backdrop-blur-md">
       <div className="shell flex h-[4.5rem] items-center justify-between gap-4">
         <Link
           href={`/${lang}`}
@@ -37,16 +37,17 @@ export function SiteHeader({
 
         <nav
           aria-label={dict.nav.label}
-          className="flex items-center gap-6 sm:gap-8"
+          className="flex flex-1 items-center justify-end gap-3 sm:gap-4"
         >
           {/* Onder lg passen zeven labels niet naast de naam en de taalwissel;
-              daar neemt het hamburgermenu ze over. */}
-          <ul className="hidden items-center gap-7 lg:flex">
+              daar neemt het hamburgermenu ze over. mx-auto zet de pil in het
+              midden van de ruimte tussen naam en knoppen. */}
+          <ul className="glass mx-auto hidden items-center rounded-full p-1 lg:flex">
             {sections.map((s) => (
               <li key={s.href}>
                 <a
                   href={s.href}
-                  className="text-sm tracking-wide transition-opacity hover:opacity-60"
+                  className="block rounded-full px-3 py-1.5 text-sm font-semibold text-muted transition-colors hover:bg-ink hover:text-paper"
                 >
                   {s.label}
                 </a>
@@ -58,14 +59,14 @@ export function SiteHeader({
             href={otherHref}
             hrefLang={lang === "nl" ? "en" : "nl"}
             aria-label={dict.nav.otherLangLabel}
-            className="label-caps rounded-full border border-line px-3 py-1.5 !text-ink transition-colors hover:border-ink"
+            className="label-caps glass rounded-full px-3 py-2 !text-ink transition-colors hover:bg-ink hover:!text-paper"
           >
             {dict.nav.otherLang}
           </Link>
 
           <a
             href={`/${lang}#contact`}
-            className="pill pill-solid hidden sm:inline-flex"
+            className="pill pill-outline hidden sm:inline-flex"
           >
             {dict.nav.cta}
           </a>

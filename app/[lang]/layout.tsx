@@ -1,18 +1,15 @@
 import type { Metadata } from "next"
-import { Anonymous_Pro, Inter } from "next/font/google"
+import { Anonymous_Pro, Manrope } from "next/font/google"
 import { notFound } from "next/navigation"
 import { SiteFooter } from "@/components/site-footer"
 import { getDictionary, isLang, LANGS } from "@/content/dictionaries"
 import { SITE } from "@/lib/site"
 import "../globals.css"
 
-// Twee families, meer niet. Inter draagt alles wat je leest; de cursief in de
-// koppen is een echte italic van Inter, geen scheefgetrokken rechte letter —
-// vandaar dat "italic" hier expliciet meegeladen wordt.
-const inter = Inter({
-  variable: "--font-inter",
+// Twee families, meer niet. Manrope draagt alles wat je leest.
+const sans = Manrope({
+  variable: "--font-sans-face",
   subsets: ["latin"],
-  style: ["normal", "italic"],
   display: "swap",
 })
 
@@ -73,7 +70,7 @@ export default async function LangLayout({
   const dict = getDictionary(lang)
 
   return (
-    <html lang={lang} className={`${inter.variable} ${mono.variable}`}>
+    <html lang={lang} className={`${sans.variable} ${mono.variable}`}>
       <body>
         {/* Eerste tabstop van de pagina. Blijft buiten beeld tot hij focus
             krijgt, en springt dan in zicht. */}

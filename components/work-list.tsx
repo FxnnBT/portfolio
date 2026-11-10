@@ -107,7 +107,7 @@ function Card({
   const split = wide && Boolean(project.image)
 
   return (
-    <article className="group h-full overflow-hidden rounded-[var(--radius-card)] border border-band-line bg-[#0c0c0c] transition-colors duration-300 hover:border-band-muted">
+    <article className="group h-full overflow-hidden rounded-[var(--radius-card)] border border-band-line bg-paper transition-colors duration-300 hover:border-band-muted">
       <div
         className={[
           "grid h-full",

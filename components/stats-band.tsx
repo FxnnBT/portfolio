@@ -2,11 +2,9 @@ import { Reveal } from "@/components/reveal"
 import type { Dict } from "@/content/dictionaries"
 
 /**
- * Volvlak zwarte band. Dit is het scharnier van de pagina: zonder zo'n
- * onderbreking loopt alles als één lange witte kolom door en voelt de site leeg,
- * hoeveel tekst er ook in staat.
- *
- * `band` is de klasse waar globals.css de knopkleuren op omdraait.
+ * Volvlak band, een trede lichter dan de pagina. Dit is het scharnier van de
+ * pagina: zonder zo'n onderbreking loopt alles als één lange kolom door en
+ * voelt de site leeg, hoeveel tekst er ook in staat.
  */
 export function StatsBand({ dict }: { dict: Dict }) {
   return (

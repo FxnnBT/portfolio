@@ -1,15 +1,15 @@
 import { ArrowUpRight } from "lucide-react"
 import { Marquee } from "@/components/marquee"
+import { Silk } from "@/components/silk"
 import { type Dict, type Lang, MARQUEE } from "@/content/dictionaries"
 
-/**
- * Gecentreerde hero. De kop staat op gewicht 400 en niet vet: op deze
- * lettergrootte doet de schaal het werk al, en zwaar erbovenop maakt hem
- * schreeuwerig in plaats van groot.
- */
+/** Gecentreerde hero op het stippenraster met lichtvlekken (.backdrop). */
 export function Hero({ dict, lang }: { dict: Dict; lang: Lang }) {
   return (
-    <section className="pt-16 sm:pt-24">
+    <section className="backdrop relative isolate pt-16 sm:pt-24">
+      {/* Het masker laat de golven onder de header en boven de marquee
+          uitdoven, zodat er nergens een harde rand staat. */}
+      <Silk className="absolute inset-0 -z-10 size-full [mask-image:linear-gradient(transparent,#000_18%,#000_50%,transparent_85%)]" />
       <div className="shell text-center">
         {/* Geen "beschikbaar voor stage"-pilletje met groen puntje hierboven:
             dat staat op elke template-site. Stage staat bij de feiten onder

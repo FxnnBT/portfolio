@@ -63,7 +63,7 @@ export function ContactBand({ dict }: { dict: Dict }) {
                   href={link.href}
                   target="_blank"
                   rel="me noopener noreferrer"
-                  className="group flex h-full items-center justify-between gap-4 p-6 transition-colors hover:bg-[#101010] sm:p-7"
+                  className="group flex h-full items-center justify-between gap-4 p-6 transition-colors hover:bg-paper-soft sm:p-7"
                 >
                   <span className="min-w-0">
                     <span className="label-caps block !text-band-muted">
