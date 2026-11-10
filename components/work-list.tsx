@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { Rail } from "@/components/rail"
 import { Reveal } from "@/components/reveal"
 import { SectionHeading } from "@/components/section-heading"
 import type { Dict, Lang } from "@/content/dictionaries"
@@ -68,9 +69,9 @@ export function ProjectGrid({
   const [featured, ...rest] = projects
 
   return (
-    <div className="mt-14 grid gap-6 sm:grid-cols-2">
+    <Rail className="mt-14 grid gap-6 sm:grid-cols-2 [--rail-bg:var(--band)]">
       {featured ? (
-        <Reveal className="block sm:col-span-2">
+        <Reveal className="rail-step block sm:col-span-2">
           <Card project={featured} dict={dict} lang={lang} wide />
         </Reveal>
       ) : null}
@@ -78,13 +79,14 @@ export function ProjectGrid({
       {rest.map((project, i) => (
         <Reveal
           key={project.slug}
-          className="block"
+          // Eén stip per rij: alleen de linker kaart staat aan de lijn.
+          className={i % 2 ? "block" : "rail-step block"}
           delay={Math.min(i, 3) * 80}
         >
           <Card project={project} dict={dict} lang={lang} />
         </Reveal>
       ))}
-    </div>
+    </Rail>
   )
 }
 

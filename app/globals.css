@@ -307,6 +307,86 @@ body {
   }
 }
 
+/* ---- Rail ---------------------------------------------------------------
+   Lijn links van een lijst die zich vult terwijl je scrolt; components/rail.tsx
+   zet de transform van vulling en lichtpunt en data-passed op de stappen.
+   Alleen vanaf lg: op een telefoon kost de inspringing te veel breedte.
+
+   --rail-dot is de hoogte van de stip binnen een stap, --rail-bg de kleur van
+   de sectie erachter, zodat een open stip de lijn afdekt. */
+.rail {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .rail-track {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .rail {
+    display: block;
+    position: absolute;
+    top: var(--rail-dot, 3rem);
+    bottom: 0;
+    left: 14px;
+    width: 1px;
+    pointer-events: none;
+    background: rgb(242 239 235 / 0.16);
+  }
+
+  .rail-fill {
+    position: absolute;
+    inset: 0;
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    background: linear-gradient(to bottom, rgb(242 239 235 / 0.1), rgb(242 239 235 / 0.85));
+    box-shadow: 0 0 10px rgb(242 239 235 / 0.35);
+  }
+
+  .rail-orb {
+    position: absolute;
+    top: -8px;
+    left: -7.5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0 32%, rgb(242 239 235 / 0.9) 46%, transparent 74%);
+    box-shadow:
+      0 0 14px 3px rgb(242 239 235 / 0.38),
+      0 0 42px 10px rgb(242 239 235 / 0.16);
+  }
+
+  .rail-step {
+    position: relative;
+  }
+
+  .rail-step::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--rail-dot, 3rem) - 6px);
+    /* Midden op de lijn: 14px vanaf de rand, min de inspringing van 3rem. */
+    left: calc(8.5px - 3rem);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgb(242 239 235 / 0.16);
+    background: var(--rail-bg, var(--paper-soft));
+    transition:
+      background-color 400ms var(--ease-out-expo),
+      border-color 400ms var(--ease-out-expo),
+      box-shadow 400ms var(--ease-out-expo);
+  }
+
+  .rail-step[data-passed]::before {
+    border-color: var(--ink);
+    background: var(--ink);
+    box-shadow:
+      0 0 0 5px rgb(242 239 235 / 0.08),
+      0 0 16px rgb(242 239 235 / 0.4);
+  }
+}
+
 /* ---- Reveal-on-scroll ---------------------------------------------------
    Alleen transform en opacity, dus het blijft op de compositor.
 

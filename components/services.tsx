@@ -1,3 +1,4 @@
+import { Rail } from "@/components/rail"
 import { Reveal } from "@/components/reveal"
 import { SectionHeading } from "@/components/section-heading"
 import type { Dict } from "@/content/dictionaries"
@@ -22,23 +23,30 @@ export function Services({ dict }: { dict: Dict }) {
           intro={dict.services.intro}
         />
 
-        <ul className="mt-14 border-t border-line">
-          {dict.services.items.map((item, i) => (
-            <Reveal as="li" key={item.title} delay={Math.min(i, 3) * 70}>
-              <div className="group grid items-baseline gap-3 border-b border-line py-8 sm:grid-cols-[4rem_1fr] sm:gap-8 sm:py-10 lg:grid-cols-[4rem_1fr_28rem]">
-                <span className="label accent">
-                  #{String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-xl tracking-tight transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1 sm:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="max-w-prose text-sm leading-relaxed text-muted sm:text-base">
-                  {item.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
+        <Rail className="mt-14 lg:[--rail-dot:3.5rem]">
+          <ul className="border-t border-line">
+            {dict.services.items.map((item, i) => (
+              <Reveal
+                as="li"
+                key={item.title}
+                className="rail-step"
+                delay={Math.min(i, 3) * 70}
+              >
+                <div className="group grid items-baseline gap-3 border-b border-line py-8 sm:grid-cols-[4rem_1fr] sm:gap-8 sm:py-10 lg:grid-cols-[4rem_1fr_28rem]">
+                  <span className="label accent">
+                    #{String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-xl tracking-tight transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1 sm:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="max-w-prose text-sm leading-relaxed text-muted sm:text-base">
+                    {item.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </Rail>
       </div>
     </section>
   )
