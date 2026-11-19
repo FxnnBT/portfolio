@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { MobileMenu } from "@/components/mobile-menu"
+import { ThemeToggle } from "@/components/theme-toggle"
 import type { Dict, Lang } from "@/content/dictionaries"
 
 /**
@@ -63,6 +64,8 @@ export function SiteHeader({
           >
             {dict.nav.otherLang}
           </Link>
+
+          <ThemeToggle label={dict.nav.theme} />
 
           <a
             href={`/${lang}#contact`}

@@ -5,6 +5,9 @@
    blijft dat staan tot je ergens anders tikt. Dit maakt hover overal echt. */
 @custom-variant hover (&:hover);
 
+/* Donker is een keuze van de bezoeker, gezet als data-theme op <html>. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-soft: var(--paper-soft);
@@ -12,8 +15,8 @@
   --color-muted: var(--muted);
   --color-line: var(--line);
 
-  /* Op de zwarte banden. Losse tokens in plaats van een dark-variant: de
-     banden zijn een ontwerpkeuze, geen themavoorkeur van de bezoeker. */
+  /* Op de banden: een trede donkerder dan de pagina in licht, een trede
+     lichter in donker. */
   --color-band: var(--band);
   --color-band-fg: var(--band-fg);
   --color-band-muted: var(--band-muted);
@@ -26,11 +29,34 @@
 }
 
 :root {
-  /* Warm donker: bijna-zwart met een bruine ondertoon, tekst in gebroken wit.
-     Drie treden donker (paper → paper-soft → band) scheiden de secties. */
+  /* Warm licht: gebroken wit met een zandige ondertoon, tekst in bijna-zwart.
+     Drie treden (paper → paper-soft → band) scheiden de secties. */
+  color-scheme: light;
+  --paper: #faf8f5;
+  --paper-soft: #f3f0eb;
+  --ink: #1a1714;
+  /* De inkt als losse kanalen, voor glas en gloed met eigen alfa. */
+  --ink-rgb: 26 23 20;
+  --muted: #67625c;
+  --line: #e4dfd8;
+
+  --band: #ece8e2;
+  --band-fg: #1a1714;
+  --band-muted: #67625c;
+  --band-line: #d9d3cb;
+
+  --radius-card: 20px;
+  --radius-media: 24px;
+}
+
+/* Zelfde specificiteit als :root, dus de printregels verderop winnen nog. */
+[data-theme="dark"] {
+  /* Warm donker: bijna-zwart met een bruine ondertoon, tekst in gebroken wit. */
+  color-scheme: dark;
   --paper: #100d0b;
   --paper-soft: #161210;
   --ink: #f2efeb;
+  --ink-rgb: 242 239 235;
   --muted: #989591;
   --line: #272421;
 
@@ -38,13 +64,9 @@
   --band-fg: #f2efeb;
   --band-muted: #989591;
   --band-line: #322e2a;
-
-  --radius-card: 20px;
-  --radius-media: 24px;
 }
 
 html {
-  color-scheme: dark;
   /* Bewust GEEN scroll-behavior: smooth.
      Chrome voert de sprong naar #contact bij het laden van /nl#contact dan uit
      als animatie, en die wordt afgebroken zodra React hydrateert — de bezoeker
@@ -202,22 +224,22 @@ body {
   /* Matglas: een zweem licht, een dunne rand en een glimlijn bovenaan. */
   .glass,
   .pill-outline {
-    background: rgb(242 239 235 / 0.06);
-    border: 1px solid rgb(242 239 235 / 0.14);
-    box-shadow: inset 0 1px 0 rgb(242 239 235 / 0.14);
+    background: rgb(var(--ink-rgb) / 0.06);
+    border: 1px solid rgb(var(--ink-rgb) / 0.14);
+    box-shadow: inset 0 1px 0 rgb(var(--ink-rgb) / 0.14);
     color: var(--ink);
   }
 
   .pill-outline:hover {
-    background: rgb(242 239 235 / 0.1);
+    background: rgb(var(--ink-rgb) / 0.1);
   }
 
   /* Achtergrond van de hero: stippenraster met twee zachte lichtvlekken. */
   .backdrop {
     background-image:
-      radial-gradient(rgb(242 239 235 / 0.08) 1px, transparent 1px),
-      radial-gradient(56rem 22rem at 15% 40%, rgb(242 239 235 / 0.12), transparent 65%),
-      radial-gradient(48rem 20rem at 90% 45%, rgb(242 239 235 / 0.08), transparent 65%);
+      radial-gradient(rgb(var(--ink-rgb) / 0.08) 1px, transparent 1px),
+      radial-gradient(56rem 22rem at 15% 40%, rgb(var(--ink-rgb) / 0.12), transparent 65%),
+      radial-gradient(48rem 20rem at 90% 45%, rgb(var(--ink-rgb) / 0.08), transparent 65%);
     background-size: 28px 28px, auto, auto;
   }
 
@@ -279,10 +301,10 @@ body {
 }
 
 .marquee-item::before {
-  background: linear-gradient(rgb(242 239 235 / 0.13), rgb(242 239 235 / 0.04));
+  background: linear-gradient(rgb(var(--ink-rgb) / 0.13), rgb(var(--ink-rgb) / 0.04));
   box-shadow:
-    inset 0 0 0 1px rgb(242 239 235 / 0.2),
-    inset 0 1px 0 rgb(242 239 235 / 0.32);
+    inset 0 0 0 1px rgb(var(--ink-rgb) / 0.2),
+    inset 0 1px 0 rgb(var(--ink-rgb) / 0.32);
   transition: opacity 220ms var(--ease-out-expo);
 }
 
@@ -332,7 +354,7 @@ body {
     left: 14px;
     width: 1px;
     pointer-events: none;
-    background: rgb(242 239 235 / 0.16);
+    background: rgb(var(--ink-rgb) / 0.16);
   }
 
   .rail-fill {
@@ -340,8 +362,8 @@ body {
     inset: 0;
     transform: scaleY(0);
     transform-origin: 50% 0;
-    background: linear-gradient(to bottom, rgb(242 239 235 / 0.1), rgb(242 239 235 / 0.85));
-    box-shadow: 0 0 10px rgb(242 239 235 / 0.35);
+    background: linear-gradient(to bottom, rgb(var(--ink-rgb) / 0.1), rgb(var(--ink-rgb) / 0.85));
+    box-shadow: 0 0 10px rgb(var(--ink-rgb) / 0.35);
   }
 
   .rail-orb {
@@ -351,10 +373,10 @@ body {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: radial-gradient(circle, #fff 0 32%, rgb(242 239 235 / 0.9) 46%, transparent 74%);
+    background: radial-gradient(circle, var(--ink) 0 32%, rgb(var(--ink-rgb) / 0.9) 46%, transparent 74%);
     box-shadow:
-      0 0 14px 3px rgb(242 239 235 / 0.38),
-      0 0 42px 10px rgb(242 239 235 / 0.16);
+      0 0 14px 3px rgb(var(--ink-rgb) / 0.38),
+      0 0 42px 10px rgb(var(--ink-rgb) / 0.16);
   }
 
   .rail-step {
@@ -370,7 +392,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 1px solid rgb(242 239 235 / 0.16);
+    border: 1px solid rgb(var(--ink-rgb) / 0.16);
     background: var(--rail-bg, var(--paper-soft));
     transition:
       background-color 400ms var(--ease-out-expo),
@@ -382,8 +404,8 @@ body {
     border-color: var(--ink);
     background: var(--ink);
     box-shadow:
-      0 0 0 5px rgb(242 239 235 / 0.08),
-      0 0 16px rgb(242 239 235 / 0.4);
+      0 0 0 5px rgb(var(--ink-rgb) / 0.08),
+      0 0 16px rgb(var(--ink-rgb) / 0.4);
   }
 }
 

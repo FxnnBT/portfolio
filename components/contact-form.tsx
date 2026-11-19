@@ -24,11 +24,9 @@ export function ContactForm({ dict }: { dict: Dict["contact"] }) {
   const values = state.status === "error" ? state.values : undefined
 
   return (
-    // color-scheme: dark geeft autofill en de resize-greep van de textarea
-    // donkere kleuren; anders zet Chrome een lichtblauw vlak op de zwarte band.
     <form
       action={action}
-      className="grid gap-8 text-left [color-scheme:dark] sm:grid-cols-2"
+      className="grid gap-8 text-left sm:grid-cols-2"
     >
       <label className="block">
         <span className="label-caps !text-band-muted">{dict.form.name}</span>

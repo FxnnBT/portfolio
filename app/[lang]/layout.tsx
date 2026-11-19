@@ -70,7 +70,22 @@ export default async function LangLayout({
   const dict = getDictionary(lang)
 
   return (
-    <html lang={lang} className={`${sans.variable} ${mono.variable}`}>
+    // suppressHydrationWarning: het script hieronder zet data-theme op <html>
+    // voordat React hydrateert.
+    <html
+      lang={lang}
+      className={`${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Draait tijdens het parsen, vóór de eerste paint: zonder dit ziet
+            wie donker koos eerst een flits licht. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         {/* Eerste tabstop van de pagina. Blijft buiten beeld tot hij focus
             krijgt, en springt dan in zicht. */}

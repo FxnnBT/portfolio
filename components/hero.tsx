@@ -8,8 +8,9 @@ export function Hero({ dict, lang }: { dict: Dict; lang: Lang }) {
   return (
     <section className="backdrop relative isolate pt-16 sm:pt-24">
       {/* Het masker laat de golven onder de header en boven de marquee
-          uitdoven, zodat er nergens een harde rand staat. */}
-      <Silk className="absolute inset-0 -z-10 size-full [mask-image:linear-gradient(transparent,#000_18%,#000_50%,transparent_85%)]" />
+          uitdoven, zodat er nergens een harde rand staat. In licht wordt het
+          lichte zijde omgekeerd tot schaduwplooien, gedempt tot satijn. */}
+      <Silk className="absolute inset-0 -z-10 size-full opacity-40 invert [mask-image:linear-gradient(transparent,#000_18%,#000_50%,transparent_85%)] dark:opacity-100 dark:invert-0" />
       <div className="shell text-center">
         {/* Geen "beschikbaar voor stage"-pilletje met groen puntje hierboven:
             dat staat op elke template-site. Stage staat bij de feiten onder
